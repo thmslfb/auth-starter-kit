@@ -59,7 +59,7 @@ export const Hero = () => {
           <div className='flex justify-center mt-8 space-x-4'>
             <Button variant='outline' asChild>
               <Link
-                href='https://gihtub.com/thmslfb/next-lucia-kit'
+                href='https://github.com/thmslfb/auth-starter-kit'
                 target='_blank'>
                 Explore on GitHub
               </Link>
