@@ -1,9 +1,10 @@
 'use client';
 
-import { resetPasswordSchema } from '@/lib/zod-schema';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { resetPasswordSchema } from '@/lib/zod-schema';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
+import { Button } from '@/components/ui/button';
 import {
   Form,
   FormControl,
@@ -11,51 +12,48 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '../ui/form';
-import { Input } from '../ui/input';
+} from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
 import { resetPassword } from '@/actions/auth.actions';
-import { useRouter } from 'next/navigation';
+import { useState, Suspense } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { toast } from 'sonner';
-import { useSearchParams } from 'next/navigation';
-import { Button } from '../ui/button';
-import { useState } from 'react';
 import { Loader2 } from 'lucide-react';
 
-export default function ResetPasswordForm() {
+function ResetPasswordFormContent() {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const token = searchParams.get('token');
+
   const form = useForm<z.infer<typeof resetPasswordSchema>>({
     resolver: zodResolver(resetPasswordSchema),
     defaultValues: {
       password: '',
       confirmPassword: '',
     },
-    mode: 'onTouched',
   });
 
-  const searchParams = useSearchParams();
-  const token = searchParams.get('token');
-
   async function onSubmit(values: z.infer<typeof resetPasswordSchema>) {
-    if (!token) return;
+    if (!token) {
+      toast.error('Invalid or expired reset token');
+      return;
+    }
 
     setLoading(true);
-
     const res = await resetPassword(values, token);
-
     if (res.success) {
-      toast.success('Password reset successful');
+      toast.success('Password reset successfully');
       router.push('/sign-in');
     } else {
       toast.error(res.error);
     }
-
     setLoading(false);
   }
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-5'>
+      <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-6'>
         <FormField
           control={form.control}
           name='password'
@@ -63,15 +61,7 @@ export default function ResetPasswordForm() {
             <FormItem>
               <FormLabel>Password</FormLabel>
               <FormControl>
-                <Input
-                  placeholder='Password'
-                  type='password'
-                  {...field}
-                  onChange={(e) => {
-                    e.target.value = e.target.value.trim();
-                    field.onChange(e);
-                  }}
-                />
+                <Input type='password' {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -82,17 +72,9 @@ export default function ResetPasswordForm() {
           name='confirmPassword'
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Confirm password</FormLabel>
+              <FormLabel>Confirm Password</FormLabel>
               <FormControl>
-                <Input
-                  placeholder='Please confirm your password'
-                  type='password'
-                  {...field}
-                  onChange={(e) => {
-                    e.target.value = e.target.value.trim();
-                    field.onChange(e);
-                  }}
-                />
+                <Input type='password' {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -109,5 +91,13 @@ export default function ResetPasswordForm() {
         )}
       </form>
     </Form>
+  );
+}
+
+export default function ResetPasswordForm() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <ResetPasswordFormContent />
+    </Suspense>
   );
 }
