@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
@@ -12,8 +12,22 @@ import InputOTPForm from '@/components/auth/input-otp-form';
 
 export default function VerifyEmailPage() {
   const router = useRouter();
+  const [email, setEmail] = useState<string | null>(null);
   const [count, { startCountdown, stopCountdown, resetCountdown }] =
     useCountdown({ countStart: 60, intervalMs: 1000 });
+
+  useEffect(() => {
+    try {
+      const storedEmail = window.sessionStorage?.getItem('email');
+      if (!storedEmail) {
+        router.push('/sign-up');
+      } else {
+        setEmail(storedEmail);
+      }
+    } catch (error) {
+      router.push('/sign-up');
+    }
+  }, [router]);
 
   useEffect(() => {
     if (count === 0) {
@@ -22,15 +36,11 @@ export default function VerifyEmailPage() {
     }
   }, [count, stopCountdown, resetCountdown]);
 
-  const storedEmail = sessionStorage?.getItem('email');
-  if (!storedEmail) {
-    router.push('/sign-up');
-    return null;
-  }
+  if (!email) return null;
 
   async function handleResendEmail() {
-    if (!storedEmail) return;
-    const res = await resendVerificationEmail(storedEmail);
+    if (!email) return;
+    const res = await resendVerificationEmail(email);
 
     if (res.success) {
       toast.success('Verification email sent successfully');
@@ -53,7 +63,7 @@ export default function VerifyEmailPage() {
             <p className='text-sm mt-3 text-muted-foreground tracking-tight'>
               You&apos;re almost there! We sent a verification code to <br />
               <span className='font-semibold text-foreground text-base'>
-                {storedEmail}
+                {email}
               </span>
             </p>
 
