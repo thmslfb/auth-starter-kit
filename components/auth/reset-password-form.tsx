@@ -53,7 +53,9 @@ function ResetPasswordFormContent() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-6'>
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className='space-y-2 md:space-y-5'>
         <FormField
           control={form.control}
           name='password'

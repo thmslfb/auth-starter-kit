@@ -16,18 +16,16 @@ export const metadata: Metadata = {
 
 export default function ResetPasswordPage() {
   return (
-    <main className='flex h-dvh items-center justify-center p-4 md:p-0'>
-      <Card className='max-w-md mx-auto'>
-        <CardHeader>
-          <CardTitle>Reset your password</CardTitle>
-          <CardDescription>
-            Choose a new password for your account.
-          </CardDescription>
-        </CardHeader>
-        <CardContent className='space-y-5'>
-          <ResetPasswordForm />
-        </CardContent>
-      </Card>
-    </main>
+    <Card className='max-w-md mx-auto'>
+      <CardHeader>
+        <CardTitle>Reset your password</CardTitle>
+        <CardDescription>
+          Choose a new password for your account.
+        </CardDescription>
+      </CardHeader>
+      <CardContent className='space-y-2 md:space-y-5'>
+        <ResetPasswordForm />
+      </CardContent>
+    </Card>
   );
 }

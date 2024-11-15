@@ -27,33 +27,29 @@ export default async function SignInPage() {
   }
 
   return (
-    <main className='flex h-dvh items-center justify-center p-4 md:p-0'>
-      <Card className='max-w-md mx-auto'>
-        <CardHeader>
-          <CardTitle>Welcome back!</CardTitle>
-          <CardDescription>
-            Sign in to your account to continue.
-          </CardDescription>
-        </CardHeader>
-        <CardContent className='space-y-5'>
-          <SignInForm />
-          <div className='my-4 flex items-center before:mt-0.5 before:flex-1 before:border-t before:border-neutral-300 after:mt-0.5 after:flex-1 after:border-t after:border-neutral-300 dark:before:border-neutral-500 dark:after:border-neutral-500'>
-            <p className='mx-4 mb-0 text-center text-sm text-neutral-400 font-semibold dark:text-white'>
-              OR
-            </p>
-          </div>
-          <GoogleOAuthButton />
-          <GithubOAuthButton />
-        </CardContent>
-        <CardFooter className='flex justify-center'>
-          <p className='text-sm'>
-            Don&apos;t have an account ?
-            <Link href='/sign-up' className='text-primary hover:underline ml-2'>
-              Register
-            </Link>
+    <Card className='max-w-md mx-auto'>
+      <CardHeader>
+        <CardTitle>Welcome back!</CardTitle>
+        <CardDescription>Sign in to your account to continue.</CardDescription>
+      </CardHeader>
+      <CardContent className='space-y-2 md:space-y-5'>
+        <SignInForm />
+        <div className='my-4 flex items-center before:mt-0.5 before:flex-1 before:border-t before:border-neutral-300 after:mt-0.5 after:flex-1 after:border-t after:border-neutral-300 dark:before:border-neutral-500 dark:after:border-neutral-500'>
+          <p className='mx-4 mb-0 text-center text-sm text-neutral-400 font-semibold dark:text-white'>
+            OR
           </p>
-        </CardFooter>
-      </Card>
-    </main>
+        </div>
+        <GoogleOAuthButton />
+        <GithubOAuthButton />
+      </CardContent>
+      <CardFooter className='flex justify-center'>
+        <p className='text-sm'>
+          Don&apos;t have an account ?
+          <Link href='/sign-up' className='text-primary hover:underline ml-2'>
+            Register
+          </Link>
+        </p>
+      </CardFooter>
+    </Card>
   );
 }

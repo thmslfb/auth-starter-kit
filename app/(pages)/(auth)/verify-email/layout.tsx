@@ -11,5 +11,9 @@ export default function Layout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return <>{children}</>;
+  return (
+    <main className='h-dvh flex items-center justify-center p-4 md:p-0'>
+      {children}
+    </main>
+  );
 }

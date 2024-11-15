@@ -51,45 +51,41 @@ export default function VerifyEmailPage() {
   }
 
   return (
-    <main className='flex h-dvh items-center justify-center p-4 md:p-0'>
-      <Card className='w-full max-w-lg mx-auto'>
-        <div className='p-6'>
-          <div className='w-full flex justify-center'>
-            <Mail className='size-12 p-2.5 rounded-full bg-green-500/30 text-green-500' />
-          </div>
-
-          <div className='mt-5 text-center sm:mt-6 w-full'>
-            <h2 className='text-2xl font-bold'>Please verify your email</h2>
-            <p className='text-sm mt-3 text-muted-foreground tracking-tight'>
-              You&apos;re almost there! We sent a verification code to <br />
-              <span className='font-semibold text-foreground text-base'>
-                {email}
-              </span>
-            </p>
-
-            <p className='text-sm mt-5 text-muted-foreground tracking-tighter leading-snug max-w-[500px] mx-auto'>
-              Enter the verification code sent to your email to complete your
-              signup. If you don&apos;t see it, you may need to{' '}
-              <span className='text-foreground font-bold'>
-                check your spam{' '}
-              </span>
-              folder
-            </p>
-
-            <InputOTPForm />
-
-            <Button
-              type='button'
-              variant='secondary'
-              className='w-full'
-              disabled={count > 0 && count < 60}
-              onClick={handleResendEmail}>
-              Resend code
-              {count > 0 && count < 60 && ` in ${count} seconds`}
-            </Button>
-          </div>
+    <Card className='max-w-md mx-auto'>
+      <div className='p-6'>
+        <div className='w-full flex justify-center'>
+          <Mail className='size-12 p-2.5 rounded-full bg-green-500/30 text-green-500' />
         </div>
-      </Card>
-    </main>
+
+        <div className='mt-5 text-center sm:mt-6 w-full'>
+          <h2 className='text-2xl font-bold'>Please verify your email</h2>
+          <p className='text-sm mt-3 text-muted-foreground tracking-tight'>
+            You&apos;re almost there! We sent a verification code to <br />
+            <span className='font-semibold text-foreground text-base'>
+              {email}
+            </span>
+          </p>
+
+          <p className='text-sm mt-5 text-muted-foreground tracking-tighter leading-snug max-w-[500px] mx-auto'>
+            Enter the verification code sent to your email to complete your
+            signup. If you don&apos;t see it, you may need to{' '}
+            <span className='text-foreground font-bold'>check your spam </span>
+            folder
+          </p>
+
+          <InputOTPForm />
+
+          <Button
+            type='button'
+            variant='secondary'
+            className='w-full'
+            disabled={count > 0 && count < 60}
+            onClick={handleResendEmail}>
+            Resend code
+            {count > 0 && count < 60 && ` in ${count} seconds`}
+          </Button>
+        </div>
+      </div>
+    </Card>
   );
 }

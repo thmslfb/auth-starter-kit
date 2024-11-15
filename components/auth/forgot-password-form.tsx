@@ -55,7 +55,9 @@ export default function ForgotPasswordForm() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-5'>
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className='space-y-2 md:space-y-5'>
         <FormField
           control={form.control}
           name='email'

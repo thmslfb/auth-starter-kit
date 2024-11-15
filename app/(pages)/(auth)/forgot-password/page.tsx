@@ -19,24 +19,22 @@ export const metadata: Metadata = {
 
 export default function ResetPasswordPage() {
   return (
-    <main className='flex h-dvh items-center justify-center p-4 md:p-0'>
-      <Card className='max-w-md mx-auto'>
-        <CardHeader>
-          <CardTitle>Forgot your password?</CardTitle>
-          <CardDescription>
-            Enter the email address associated with your account and we&apos;ll
-            send you a link to reset your password.
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <ForgotPasswordForm />
-        </CardContent>
-        <CardFooter>
-          <Button variant='secondary' className='w-full' asChild>
-            <Link href='/sign-in'>Cancel</Link>
-          </Button>
-        </CardFooter>
-      </Card>
-    </main>
+    <Card className='max-w-md mx-auto'>
+      <CardHeader>
+        <CardTitle>Forgot your password?</CardTitle>
+        <CardDescription>
+          Enter the email address associated with your account and we&apos;ll
+          send you a link to reset your password.
+        </CardDescription>
+      </CardHeader>
+      <CardContent>
+        <ForgotPasswordForm />
+      </CardContent>
+      <CardFooter>
+        <Button variant='secondary' className='w-full' asChild>
+          <Link href='/sign-in'>Cancel</Link>
+        </Button>
+      </CardFooter>
+    </Card>
   );
 }

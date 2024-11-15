@@ -27,31 +27,29 @@ export default async function SignUpPage() {
   }
 
   return (
-    <main className='flex h-dvh items-center justify-center p-4 md:p-0'>
-      <Card className='max-w-md mx-auto'>
-        <CardHeader>
-          <CardTitle>Begin your journey...</CardTitle>
-          <CardDescription>Join us in just a few clicks.</CardDescription>
-        </CardHeader>
-        <CardContent className='space-y-5'>
-          <SignUpForm />
-          <div className='my-4 flex items-center before:mt-0.5 before:flex-1 before:border-t before:border-neutral-300 after:mt-0.5 after:flex-1 after:border-t after:border-neutral-300 dark:before:border-neutral-500 dark:after:border-neutral-500'>
-            <p className='mx-4 mb-0 text-center text-sm text-neutral-400 font-semibold dark:text-white'>
-              OR
-            </p>
-          </div>
-          <GoogleOAuthButton />
-          <GithubOAuthButton />
-        </CardContent>
-        <CardFooter className='flex justify-center'>
-          <p className='text-sm'>
-            Already have an account ?
-            <Link href='/sign-in' className='text-primary hover:underline ml-2'>
-              Log in
-            </Link>
+    <Card className='max-w-md mx-auto'>
+      <CardHeader>
+        <CardTitle>Begin your journey...</CardTitle>
+        <CardDescription>Join us in just a few clicks.</CardDescription>
+      </CardHeader>
+      <CardContent className='space-y-2 md:space-y-5'>
+        <SignUpForm />
+        <div className='my-4 flex items-center before:mt-0.5 before:flex-1 before:border-t before:border-neutral-300 after:mt-0.5 after:flex-1 after:border-t after:border-neutral-300 dark:before:border-neutral-500 dark:after:border-neutral-500'>
+          <p className='mx-4 mb-0 text-center text-sm text-neutral-400 font-semibold dark:text-white'>
+            OR
           </p>
-        </CardFooter>
-      </Card>
-    </main>
+        </div>
+        <GoogleOAuthButton />
+        <GithubOAuthButton />
+      </CardContent>
+      <CardFooter className='flex justify-center'>
+        <p className='text-sm'>
+          Already have an account ?
+          <Link href='/sign-in' className='text-primary hover:underline ml-2'>
+            Log in
+          </Link>
+        </p>
+      </CardFooter>
+    </Card>
   );
 }
