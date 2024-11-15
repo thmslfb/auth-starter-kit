@@ -21,7 +21,7 @@ export default async function Home() {
   }
 
   return (
-    <main className='max-w-7xl mx-auto px-4 flex flex-col justify-between min-h-screen'>
+    <main className='max-w-7xl mx-auto px-4 flex flex-col justify-between h-dvh'>
       <header className='flex w-full pt-5 items-center justify-between'>
         <nav className='flex items-center gap-x-3'>
           <DropdownMenu>

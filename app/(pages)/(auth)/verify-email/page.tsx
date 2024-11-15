@@ -51,7 +51,7 @@ export default function VerifyEmailPage() {
   }
 
   return (
-    <main className='flex min-h-screen items-center justify-center p-4 md:p-0'>
+    <main className='flex h-dvh items-center justify-center p-4 md:p-0'>
       <Card className='w-full max-w-lg mx-auto'>
         <div className='p-6'>
           <div className='w-full flex justify-center'>

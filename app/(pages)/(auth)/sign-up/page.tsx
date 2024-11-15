@@ -27,7 +27,7 @@ export default async function SignUpPage() {
   }
 
   return (
-    <main className='flex min-h-screen items-center justify-center p-4 md:p-0'>
+    <main className='flex h-dvh items-center justify-center p-4 md:p-0'>
       <Card className='max-w-md mx-auto'>
         <CardHeader>
           <CardTitle>Begin your journey...</CardTitle>

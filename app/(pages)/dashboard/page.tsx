@@ -20,7 +20,7 @@ const DashboardPage = async () => {
 
   return (
     <>
-      <div className='flex justify-center items-center h-screen'>
+      <div className='flex justify-center items-center h-dvh'>
         <div className='flex items-center gap-2 border p-4 rounded-lg bg-secondary transition-all cursor-pointer hover:shadow-xl'>
           {user.avatar && (
             <Image
