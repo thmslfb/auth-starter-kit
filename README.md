@@ -41,7 +41,7 @@ Before you begin, ensure you have:
 ### 1. Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/auth-starter-kit.git
+git clone https://github.com/thmslfb/auth-starter-kit.git
 cd auth-starter-kit
 ```
 
